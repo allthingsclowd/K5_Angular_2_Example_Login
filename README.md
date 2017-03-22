@@ -1,5 +1,7 @@
 # K5_Angular_2_Example_Login
 
+## WARNING - This code is for debug use only and does not work at present!!!!! See Jason Watmore's original example for the working setup
+
 https://github.com/allthingsclowd/K5_Angular_2_Example_Login
 
 
@@ -13,12 +15,15 @@ They key challenge that I'm having during testing appears to be CORS related whi
 
 
 When I try the suggestions in this detailed CORS blog - http://restlet.com/company/blog/2015/12/15/understanding-and-using-cors/ 
-I get the following errors when trying to send the 'preflight checks' -
+I get the following errors when I send the 'preflight checks' -
 
 "
 http.umd.js:1207 Refused to set unsafe header "Access-Control-Request-Method"
+
 http.umd.js:1207 Refused to set unsafe header "Access-Control-Request-Headers"
+
 http.umd.js:1207 Refused to set unsafe header "Origin"
+
 "
 
 
@@ -53,11 +58,3 @@ Angular 2 User Registration and Login Example & Tutorial
 
 To see a demo and further details go to http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
 This version of the example uses SystemJS as the module loader.
-
-Install NodeJS (> v4) and NPM (> v3) from https://nodejs.org/en/download/, you can check the versions you have installed by running node -v and npm -v from the command line.
- 
-Download the project source code from https://github.com/cornflourblue/angular2-registration-login-example
- 
-Install all required npm packages by running npm install from the command line in the project root folder (where the package.json is located).
- 
-Start the application by running npm start from the command line in the project root folder.
