@@ -49,7 +49,8 @@ export class AuthenticationService {
                 
                 // retrieve the remainder of the values from the response body
                 user.name = res.json().token.user.name;
-                console.log(user.name);
+                user.catalog = res.json().token.catalog;
+                console.log(user.catalog);
                 console.log(user.id);
                 //user.username = res.json().get('username');
 
