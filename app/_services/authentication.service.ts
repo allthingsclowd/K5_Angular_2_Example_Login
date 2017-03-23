@@ -11,7 +11,7 @@ export class AuthenticationService {
 
     login(username: string, password: string, contract: string, region: string) {
   
-
+        // CORS Proxy Service in use here
         let authURL = 'http://localhost:2337/identity.'.concat(region,'.cloud.global.fujitsu.com:443/v3/auth/tokens')
 
        
@@ -31,17 +31,21 @@ export class AuthenticationService {
         let postheaders: Headers = new Headers();
         postheaders.append('Content-Type', 'application/json');
         postheaders.append('Accept', 'application/json');
-        //postheaders.append('Origin', '*');
 
         let postopts: RequestOptions = new RequestOptions();
         postopts.headers = postheaders;
 
         return this.http.post(authURL, bodyString, postopts)
-            .map((res2: Response)=>{
-                console.log(res2.json());
-                console.log(res2.headers);
-                console.log(res2);
-                res2.headers;
+            .map((res: Response)=>{
+                console.log(res.json());
+                console.log(res.headers);
+                console.log(res);
+                res.headers;
+                let user = res.json();
+                if (user && res.headers.get('x-subject-token')) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUsertoken', JSON.stringify(res.headers.get('x-subject-token')));
+                }
             });
 
 
@@ -50,7 +54,7 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentUsertoken');
     }
 }
 
