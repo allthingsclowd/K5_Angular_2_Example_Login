@@ -1,5 +1,9 @@
 # K5_Angular_2_Example_Login
 
+# Update - 23/03/2017 - Angular 2 and K5 CORS challenge resolved...by using a lightweight CORS PROXY Server
+
+See the cors_proxy_service.js for the solution.
+
 ## WARNING - This code is for debug use only and does not work at present!!!!! See Jason Watmore's original example for the working setup
 
 https://github.com/allthingsclowd/K5_Angular_2_Example_Login
@@ -37,6 +41,9 @@ The two key questions are :
 
 
 # Installation
+
+## Update 23/3/17 - Resolved by using a simple nodejs proxy service - see npm cors-anywhere module
+
  - Install NodeJS (> v4) and NPM (> v3) from https://nodejs.org/en/download/, you can check the versions you have installed by running node -v and npm -v from the command line.
  - git clone https://github.com/allthingsclowd/K5_Angular_2_Example_Login
  - cd K5_Angular_2_Example_Login
@@ -44,10 +51,16 @@ The two key questions are :
  - npm install
  - npm start
 
+ Update 23/3/17 - The above application has be configured to use the following proxy server
+  - Open a new terminal window
+  - npm install cors-anywhere
+  - cd to the cors_proxy_server folder
+  - node cors_proxy_service.js
+
 Navigate to http://localhost:3000
 
 # Caution:
-I've only hacked the authentication.service.ts file and the login.component.html to facilitate making the HTTP request to K5...there's a lot more to do once I get passed the CORS issue.
+I've only hacked the authentication.service.ts file and the login.component.html to facilitate making the HTTP request to K5...there's a lot more to do for a full SPA but this should be enough to get folks passed the initial authentication hurdles.....the only restriction now is your imagination.
 
 
 
