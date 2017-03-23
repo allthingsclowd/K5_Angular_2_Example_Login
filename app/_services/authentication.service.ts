@@ -45,19 +45,18 @@ export class AuthenticationService {
                 let user = new User();
                 
                 // retrieve the K5/OpenStack authentication token from the response header
-                user.id = res.headers.get('x-subject-token');
+                user.token[0].id = res.headers.get('x-subject-token');
                 
                 // retrieve the remainder of the values from the response body
                 user.name = res.json().token.user.name;
+                user.id = res.json().token.user.id;
                 user.catalog = res.json().token.catalog;
-                console.log(user.catalog);
-                console.log(user.id);
-                //user.username = res.json().get('username');
-
+                user.roles = res.json().token.roles;
+                user.token[0].expires = res.json().token.expires;
 
                 if (user && res.headers.get('x-subject-token')) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUsertoken', JSON.stringify(res.headers.get('x-subject-token')));
+                    localStorage.setItem('currentUsertoken', JSON.stringify(user));
                 }
             });
 
