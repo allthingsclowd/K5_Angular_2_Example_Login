@@ -4,4 +4,5 @@
     password: string;
     contract: string;
     region: string;
+    token: string;
 }
