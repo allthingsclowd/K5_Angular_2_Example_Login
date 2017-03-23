@@ -5,3 +5,13 @@
 .help-block {
     font-size: 12px;
 }
+
+.tab-pane {
+    height:150px;
+    overflow-y:scroll;
+    font-size: 12px
+}
+
+ body, html, .container-fluid {
+         height: 100%;
+}

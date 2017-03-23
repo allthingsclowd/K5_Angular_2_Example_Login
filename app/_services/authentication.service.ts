@@ -38,10 +38,6 @@ export class AuthenticationService {
 
         return this.http.post(authURL, bodyString, postopts)
             .map((res: Response)=>{
-                console.log(res.json());
-                console.log(res.headers);
-                console.log("Native Response Object >> " + res);
-                res.headers;
                 let user = new User();
                 
                 // retrieve the K5/OpenStack authentication token from the response header
@@ -49,20 +45,14 @@ export class AuthenticationService {
                 
                 // retrieve the remainder of the values from the response body
                 user.name = res.json().token.user.name;
-                console.log(user.name);
                 user.id = res.json().token.user.id;
-                console.log(user.id);
                 user.catalog = res.json().token.catalog;
-                console.log(user.catalog);
                 user.roles = res.json().token.roles;
-                console.log(user.roles);
                 user.expires = res.json().token.expires_at;
-                console.log(user.expires);
-                console.log(user.token)
-                console.log("Getting this far...")
 
-                if (user && res.headers.get('x-subject-token')) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+
+                if (user.token != null) {
+                    // store user details local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUsertoken', JSON.stringify(user));
                 }
             });

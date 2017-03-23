@@ -11,10 +11,8 @@ import { UserService } from '../_services/index';
 export class HomeComponent implements OnInit {
     currentUser: User;
         
-
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUsertoken'));
-        console.log(this.currentUser.catalog);
         
     }
 
