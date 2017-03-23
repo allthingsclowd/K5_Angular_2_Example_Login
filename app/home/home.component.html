@@ -7,10 +7,11 @@
             {{role.name}}
             
         </li>
-        <li *ngFor="let endpoint of currentUser.catalog">
-            {{endpoint[0].name}} {{endpoint[0].url}}
-            
-        </li>
+        <br>
+        <div *ngFor="let endpoint of currentUser.catalog">
+            <li *ngIf="endpoint.endpoints[0]">{{endpoint.endpoints[0].name}} {{endpoint.endpoints[0].url}}</li>            
+        </div>
+        <br>
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
 </div>

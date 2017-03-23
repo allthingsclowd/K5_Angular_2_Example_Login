@@ -1,10 +1,10 @@
 ﻿export class User {
     id: string;
     name: string;
-    password: string;
     contract: string;
     region: string;
-    token: token[];
+    token: string;
+    expires: string;
     catalog: catalog[];
     roles: roles[];
 }
@@ -14,15 +14,14 @@ export class catalog {
 }
 
 export class endpoints {
+    id:string;
+    interface: string;
     name: string;
+    region: string;
     url: string;
 }
 
 export class roles {
-    name: string
-}
-
-export class token {
+    name: string;
     id: string;
-    expires: string;
 }
