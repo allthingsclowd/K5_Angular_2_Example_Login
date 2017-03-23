@@ -10,21 +10,11 @@ export class AuthenticationService {
     
 
     login(username: string, password: string, contract: string, region: string) {
-        //let headers: Headers = new Headers();
-        //headers.append('Access-Control-Request-Method','GET, PUT, POST, OPTIONS, DELETE');
-        //headers.append('Access-Control-Request-Headers', 'content-type,accept');
-        //headers.append( 'Origin', 'http://localhost:*');
+  
 
-        //let opts: RequestOptions = new RequestOptions();
-        //opts.headers = headers;       
+        let authURL = 'http://localhost:2337/identity.'.concat(region,'.cloud.global.fujitsu.com:443/v3/auth/tokens')
 
-        let authURL = 'https://identity.'.concat(region,'.cloud.global.fujitsu.com/v3/auth/tokens')
-
-        //this.http.options(authURL,opts)
-        //    .map((res: Response)=>{
-        //        console.log(res.json());
-        //    });
-        
+       
         
         let body = {"auth":
                         {"identity":
@@ -41,20 +31,17 @@ export class AuthenticationService {
         let postheaders: Headers = new Headers();
         postheaders.append('Content-Type', 'application/json');
         postheaders.append('Accept', 'application/json');
-        postheaders.append( 'Origin', 'http://localhost:3000');
+        //postheaders.append('Origin', '*');
 
         let postopts: RequestOptions = new RequestOptions();
         postopts.headers = postheaders;
 
-        console.log(authURL);
-        console.log(body);
-        console.log(bodyString);
-        console.log("Whoopie getting here");
-        console.log(postheaders);
-
         return this.http.post(authURL, bodyString, postopts)
             .map((res2: Response)=>{
                 console.log(res2.json());
+                console.log(res2.headers);
+                console.log(res2);
+                res2.headers;
             });
 
 
