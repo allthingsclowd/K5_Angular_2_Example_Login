@@ -12,6 +12,8 @@
     font-size: 12px
 }
 
- body, html, .container-fluid {
-         height: 100%;
+.alert-wrap {
+    white-space: normal;
+    overflow-x:scroll;
+    overflow-y:scroll;
 }
