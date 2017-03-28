@@ -13,10 +13,10 @@ export class AuthenticationService {
     login(username: string, password: string, contract: string, region: string) {
   
         // With CORS Proxy Service in use here
-        //let authURL = 'http://localhost:2337/identity.'.concat(region,'.cloud.global.fujitsu.com:443/v3/auth/tokens')
+        let authURL = 'http://localhost:2337/identity.'.concat(region,'.cloud.global.fujitsu.com:443/v3/auth/tokens')
 
         // Without CORS Proxy Service in use
-        let authURL = 'https://identity.'.concat(region,'.cloud.global.fujitsu.com:443/v3/auth/tokens')      
+        //let authURL = 'https://identity.'.concat(region,'.cloud.global.fujitsu.com:443/v3/auth/tokens')      
         
         let body = {"auth":
                         {"identity":
